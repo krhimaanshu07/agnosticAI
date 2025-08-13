@@ -1,0 +1,188 @@
+You are a senior full-stack engineer. Create a production-ready, **3D, pure-black-theme** marketing + demo website for a radiology GenAI SaaS, visually inspired by subtlemedical.com but entirely original.
+
+## Name & Branding
+- Working brand name: **Agnostic Imaging AI** (changeable via a `site.config.ts`)
+- Palette: true black `#000000` background; grayscale text; accent = medical cyan `#00E5FF`; supporting accent = violet `#7C4DFF`.
+- Typography: Inter (UI), DM Sans (headlines). Large, confident headings, generous whitespace.
+
+## Tech Stack
+- **Frontend:** React + Vite + TypeScript
+- **3D:** react-three-fiber + drei + @react-three/postprocessing (Bloom, SSAO), performant on laptops
+- **UI & Animations:** TailwindCSS, Framer Motion (no external CSS frameworks), Headless UI for a11y primitives
+- **Image Compare:** `react-compare-slider` for before/after X-ray slider
+- **DICOM:** Cornerstone3D (drag-and-drop `.dcm` viewing)
+- **State:** Zustand
+- **Routing:** react-router-dom
+- **Forms/Validation:** React Hook Form + Zod
+- **Tooling:** ESLint, Prettier, Husky pre-commit
+- **Deployment:** Ready for Vercel or Replit web server
+- **SEO:** react-helmet-async, sitemap.xml, robots.txt, Open Graph, JSON-LD
+
+## Project Structure
+- `/src`
+  - `/components`
+    - `Navbar.tsx` (glass, sticky, logo mark + sections)
+    - `Footer.tsx`
+    - `Hero3D.tsx` (Three.js scene: rotating MRI/CT gantry ring, subtle scan beam, stars shader)
+    - `CompareSlider.tsx` (generic before/after; supports PNG/JPEG + window/level sliders)
+    - `DicomViewer.tsx` (Cornerstone3D: viewport, zoom/pan, window/level, invert, annotations toggle)
+    - `FeatureCard.tsx`, `Section.tsx`, `Badge.tsx`, `CTA.tsx`
+  - `/three`
+    - `Gantry.tsx` (3D model built procedurally from torus/cylinders; no external assets)
+    - `Scene.tsx` (lights, effects, camera controls locked to curated path)
+  - `/pages`
+    - `Home.tsx`
+    - `Solutions.tsx`
+    - `Technology.tsx`
+    - `Demos.tsx`
+    - `Pricing.tsx`
+    - `Security.tsx`
+    - `Docs.tsx`
+    - `About.tsx`
+    - `Contact.tsx`
+    - `Login.tsx`
+  - `/content` (markdown/JSON used to drive pages)
+    - `executive-summary.md`
+    - `solutions.json` (cards + copy pulled from below spec)
+  - `/lib` (helpers: seo, analytics, formatters)
+  - `/store` (Zustand slices)
+  - `App.tsx`, `main.tsx`
+  - `site.config.ts` (brand, nav, social, contact email, accent)
+
+- `/public`
+  - sample images: `xray_before.jpg`, `xray_after.jpg`, `ct_before.jpg`, `ct_after.jpg`, etc.
+  - favicon + social images
+
+## Global Design Requirements
+- **Pure black UI**: `bg-black text-zinc-200`, cards `bg-zinc-900/60` with subtle borders `border-zinc-800`, glassy surfaces using `backdrop-blur`.
+- **Radiologist vibe**: thin gridlines, monospace readouts (for pixel sizes, slice thickness), subtle scanline shader in hero.
+- Motion: tasteful, 60fps; reduced motion preference respected.
+- Accessibility: WCAG AA, keyboard nav, proper roles/aria, focus rings visible on black.
+
+## Home Page (marketing + 3D hero)
+- Hero: full-bleed 3D gantry rotating slowly with luminous scan arc; headline:
+  - H1: “OEM-Agnostic GenAI for Medical Imaging”
+  - Sub: “Super-resolution and enhancement for X-Ray, CT, MRI, and Digital Pathology — as a Service.”
+  - CTAs: “See Live Demos” (anchor to `/demos`) and “Talk to Us”
+- Stat strip (animated counters):
+  - “Up to 4× spatial upscaling (X-ray)”
+  - “Down to 0.5 mm slice equivalent (CT)”
+  - “0.5 mm³ voxel equivalence (MRI)”
+- Logos row (placeholders)
+- Feature grid (cards linking to sections below)
+
+## Solutions Page (pull copy from provided text, rewritten into crisp web sections)
+Create 4 sections with concise bullets and “Learn More” deep-dives:
+
+1) **X-Ray Imaging Super-Resolution**
+   - From ~200 µm CR → ~50 µm DR-equivalent via GenAI SaaS
+   - Preserve diagnostic fidelity; reduce hardware upgrade pressure
+   - Pay-per-use; OEM-agnostic
+
+2) **CT Imaging Super-Resolution & Enhancement**
+   - Legacy 4/16-slice (~2–3 mm) → ~0.5 mm slice thickness & spatial resolution
+   - Quality comparable to modern 256/320-slice; scalable to 512/640
+   - Fraction of capex; cloud or hybrid
+
+3) **MRI Imaging Super-Resolution & Enhancement**
+   - 1.5T fast scans (~5×5×5 mm) → ~0.5×0.5×0.5 mm 3T/5T/7T-like
+   - Maintain SNR and anatomical integrity with physics-informed priors
+   - Throughput gains with shorter scan time + enhancement
+
+4) **Digital Re-Staining for WSI (Pathology)**
+   - Predict alternative stain protocols digitally (cytology, histology, IHC)
+   - Reduce multi-stain costs; enable re-analysis of archived slides
+   - Patient-centric: digital ownership and portability
+
+Add a short “Executive context” block summarizing challenges (capex, lock-in, lifecycle).
+
+## Technology Page
+- Explain approach at a high level (no proprietary claims):
+  - **GenAI**: DNNs + adversarial learning
+  - **Physics-informed loss** to respect modality constraints
+  - **OEM-agnostic training** via harmonization
+  - **Uncertainty maps** & QA overlays
+- Inline diagrams (SVG) and toggles for:
+  - Denoise → Deblur → SR → Harmonize pipeline
+  - Window/level examples
+
+## Demos Page
+- **Before/After X-Ray Slider**: use `react-compare-slider` component with `xray_before.jpg` vs `xray_after.jpg`
+  - Controls: Window/Level sliders, Invert, “SR Strength” (0–100, applies postprocess sharpening + swap alt outputs)
+- **CT & MRI Sliders**: same pattern with CT/MRI samples
+- **DICOM Viewer**:
+  - Drag-and-drop `.dcm` (single image or simple series)
+  - Tools: zoom/pan, window/level, invert, reset, pixel readout, scale bar
+- **Disclosure** banner: “Demo assets are synthetically generated or de-identified; results illustrative.”
+
+## Pricing Page
+- Tiers:
+  - **Pay-Per-Use**: per-study pricing (placeholder numbers)
+  - **Clinical**: committed volume discount, SSO, audit logs
+  - **Enterprise/OEM**: on-prem/hybrid, custom SLAs, PHI segmentation
+- FAQ accordion (latency, compliance, PACS integration, OEMs)
+
+## Security & Compliance Page
+- Content blocks: HIPAA readiness, GDPR, SOC2-ready posture, data residency, encryption in transit/at rest, access controls/logging, BAA availability. (Copy as placeholders, clearly marked “for demo”.)
+
+## Docs Page
+- “Edge Connector” (placeholder) + REST/HTTPS SaaS flow:
+  - `POST /v1/enhance` with `modality`, `studyId`, file upload/multipart or URL
+  - `GET /v1/jobs/:id` job status
+  - Webhook schema for completion
+- Example code snippets in TS/JS + cURL. Use mock responses.
+
+## About & Contact
+- Founding story, mission (upgrade via software)
+- Contact form (React Hook Form + Zod; posts to a local mock API)
+- Social links controlled via `site.config.ts`
+
+## Login (stub)
+- Email + magic link placeholder (no real auth; mock success toast)
+
+## Dynamic Features
+- Theme is always black; provide a “Pro color profile” toggle (cyan ↔ violet accent)
+- Global SR Strength demo control (Zustand) synced across all sliders
+- FPS and GPU info (small debug panel) hidden behind `?debug=1`
+
+## Content (use/rewrite the following for site copy)
+Use this content, condensed and web-friendly (no plagiarism). Place full version in `/content/executive-summary.md` and summarized bullets on pages:
+
+Title: **Generative Artificial Intelligence Models for Medical Imaging SaaS**
+
+Executive Summary (long in MD, short on pages):
+- Medical imaging (X-ray, CT, MRI, pathology) is essential to clinical diagnostics. Hardware advances rapidly (e.g., pixel size improvements from ~500 µm to ~50 µm over ~25 years), creating pressure on centers with 10–15 year equipment lifecycles.
+- OEM SaaS can help, but lock-in and varying quality remain challenges. **OEM-agnostic GenAI SaaS** offers a path to upgrade image quality without immediate capex.
+- Use cases:
+  - **X-Ray SR**: ~200 µm → ~50 µm DR-like.
+  - **CT SR/Enhance**: 4/16-slice ~2–3 mm → ~0.5 mm equivalents, comparable to 256/320-slice systems, scalable.
+  - **MRI SR/Enhance**: 1.5T ~5 mm³ → ~0.5 mm³ 3T/5T/7T-like.
+  - **Digital Re-Staining (WSI)**: predict alternate stain protocols; reduce costs; enable archival & patient access.
+
+## Accessibility & Performance
+- Respect `prefers-reduced-motion`
+- Lazy-load 3D and heavy components
+- Lighthouse 90+ (desktop), images optimized, code-split routes
+- Keyboard/Screen reader friendly DICOM controls
+
+## Mock API (local only)
+- `/api/contact` POST → stores submissions in memory + logs
+- `/api/demo-jobs` POST/GET → returns mocked job statuses for Docs examples
+
+## Implementation Notes
+- 3D Hero: build gantry with primitive geometry; lighting: rim + area lights; add Bloom & subtle film grain
+- CompareSlider: accept `beforeSrc`, `afterSrc`, `modality`, `controls`
+- DICOM viewer: simple single-viewport Cornerstone3D setup with tool toggles
+- Add `SiteConfig` for brand name, nav, footer links, emails, social
+
+## Scripts
+- `dev`, `build`, `preview`, `lint`, `format`
+- Husky pre-commit: `lint` + `format`
+
+## Deliverables
+- Fully running Vite app
+- Clear README with setup/run/deploy steps (Replit & Vercel)
+- Sample assets wired into Demos
+- All copy populated from provided content (concise), full text in markdown
+
+Now generate all files and code.
