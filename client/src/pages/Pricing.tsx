@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import Section from "@/components/Section";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -40,7 +40,7 @@ export default function Pricing() {
         "Custom DICOM routing",
       ],
       cta: "Start Trial",
-      ctaVariant: "primary" as const,
+      ctaVariant: "default" as const,
       popular: true,
       note: "with 1000+ studies/month",
     },
@@ -168,9 +168,9 @@ export default function Pricing() {
                 data-testid={`pricing-cta-${plan.name.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {plan.cta === "Contact Sales" ? (
-                  <Link to="/contact">{plan.cta}</Link>
+                  <Link href="/contact">{plan.cta}</Link>
                 ) : (
-                  <Link to="/contact">{plan.cta}</Link>
+                  <Link href="/contact">{plan.cta}</Link>
                 )}
               </Button>
             </div>
@@ -210,7 +210,7 @@ export default function Pricing() {
             Contact our sales team to discuss volume discounts, on-premises deployment, and white-label options.
           </p>
           <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-            <Link to="/contact">
+            <Link href="/contact">
               <i className="fas fa-phone mr-2"></i>
               Contact Enterprise Sales
             </Link>

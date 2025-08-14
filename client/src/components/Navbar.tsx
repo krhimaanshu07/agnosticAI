@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { siteConfig } from "@/site.config";
@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +19,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => location === path;
 
   return (
     <nav 
@@ -31,7 +31,7 @@ export default function Navbar() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group" data-testid="logo-link">
+          <Link href="/" className="flex items-center space-x-3 group" data-testid="logo-link">
             <div className="w-8 h-8 bg-gradient-medical rounded-lg flex items-center justify-center group-hover:animate-pulse-glow transition-all">
               <i className="fas fa-atom text-white text-sm"></i>
             </div>
@@ -45,7 +45,7 @@ export default function Navbar() {
             {siteConfig.nav.map((item) => (
               <Link
                 key={item.name}
-                to={item.href}
+                href={item.href}
                 className={`transition-colors focus-visible ${
                   isActive(item.href) 
                     ? "text-primary" 
@@ -60,12 +60,12 @@ export default function Navbar() {
           
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login">
+            <Link href="/login">
               <Button variant="ghost" className="text-zinc-300 hover:text-white" data-testid="login-button">
                 Login
               </Button>
             </Link>
-            <Link to="/demos">
+            <Link href="/demos">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90" data-testid="cta-demos">
                 See Demos
               </Button>
@@ -89,7 +89,7 @@ export default function Navbar() {
                 {siteConfig.nav.map((item) => (
                   <Link
                     key={item.name}
-                    to={item.href}
+                    href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`text-left transition-colors ${
                       isActive(item.href) 
@@ -102,12 +102,12 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <div className="pt-6 border-t border-zinc-800 space-y-4">
-                  <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
                     <Button variant="ghost" className="w-full justify-start text-zinc-300 hover:text-white">
                       Login
                     </Button>
                   </Link>
-                  <Link to="/demos" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link href="/demos" onClick={() => setIsMobileMenuOpen(false)}>
                     <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                       See Demos
                     </Button>

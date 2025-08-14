@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import Hero3D from "@/components/Hero3D";
 import Section from "@/components/Section";
 import FeatureCard from "@/components/FeatureCard";

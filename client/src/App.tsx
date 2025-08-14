@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Router, Route, Switch } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
@@ -20,18 +20,18 @@ function App() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/solutions" element={<Solutions />} />
-          <Route path="/technology" element={<Technology />} />
-          <Route path="/demos" element={<Demos />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/security" element={<Security />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/solutions" component={Solutions} />
+          <Route path="/technology" component={Technology} />
+          <Route path="/demos" component={Demos} />
+          <Route path="/pricing" component={Pricing} />
+          <Route path="/security" component={Security} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/login" component={Login} />
+          <Route component={NotFound} />
+        </Switch>
       </main>
       <Footer />
       

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 
 interface FeatureCardProps {
   icon: ReactNode;
@@ -48,7 +48,7 @@ export default function FeatureCard({
 
   if (href && href.startsWith("/")) {
     return (
-      <Link to={href} data-testid={`feature-card-${title.toLowerCase().replace(/\s+/g, "-")}`}>
+      <Link href={href} data-testid={`feature-card-${title.toLowerCase().replace(/\s+/g, "-")}`}>
         <CardContent />
       </Link>
     );

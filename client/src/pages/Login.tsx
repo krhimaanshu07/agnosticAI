@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -123,7 +123,7 @@ export default function Login() {
               <div className="mt-8 pt-6 border-t border-zinc-800 text-center">
                 <p className="text-zinc-400 text-sm">
                   Don't have an account?{" "}
-                  <Link to="/contact" className="text-primary hover:text-primary/80 transition-colors">
+                  <Link href="/contact" className="text-primary hover:text-primary/80 transition-colors">
                     Contact Sales
                   </Link>
                 </p>
@@ -143,7 +143,7 @@ export default function Login() {
             {/* Back to Home */}
             <div className="text-center mt-8">
               <Link 
-                to="/" 
+                href="/" 
                 className="text-zinc-400 hover:text-primary transition-colors text-sm"
                 data-testid="back-to-home"
               >

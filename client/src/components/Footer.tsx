@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import { siteConfig } from "@/site.config";
 
 export default function Footer() {
@@ -26,16 +26,16 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-6">Solutions</h4>
             <div className="space-y-3">
-              <Link to="/solutions" className="block text-zinc-400 hover:text-primary transition-colors">
+              <Link href="/solutions" className="block text-zinc-400 hover:text-primary transition-colors">
                 X-Ray Super-Resolution
               </Link>
-              <Link to="/solutions" className="block text-zinc-400 hover:text-primary transition-colors">
+              <Link href="/solutions" className="block text-zinc-400 hover:text-primary transition-colors">
                 CT Enhancement
               </Link>
-              <Link to="/solutions" className="block text-zinc-400 hover:text-primary transition-colors">
+              <Link href="/solutions" className="block text-zinc-400 hover:text-primary transition-colors">
                 MRI Super-Resolution
               </Link>
-              <Link to="/solutions" className="block text-zinc-400 hover:text-primary transition-colors">
+              <Link href="/solutions" className="block text-zinc-400 hover:text-primary transition-colors">
                 Digital Pathology
               </Link>
             </div>
@@ -45,7 +45,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-6">Company</h4>
             <div className="space-y-3">
-              <Link to="/about" className="block text-zinc-400 hover:text-primary transition-colors">
+              <Link href="/about" className="block text-zinc-400 hover:text-primary transition-colors">
                 About Us
               </Link>
               <a href="#" className="block text-zinc-400 hover:text-primary transition-colors">
@@ -73,7 +73,7 @@ export default function Footer() {
               <a href="#" className="block text-zinc-400 hover:text-primary transition-colors">
                 Status Page
               </a>
-              <Link to="/contact" className="block text-zinc-400 hover:text-primary transition-colors">
+              <Link href="/contact" className="block text-zinc-400 hover:text-primary transition-colors">
                 Contact Support
               </Link>
             </div>
