@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Pure black theme with medical accents */
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 91.18%);
+  --card: hsl(0, 0%, 9.41%);
+  --card-foreground: hsl(0, 0%, 85.1%);
+  --popover: hsl(0, 0%, 0%);
+  --popover-foreground: hsl(0, 0%, 91.18%);
+  
+  /* Medical cyan primary */
+  --primary: hsl(187, 100%, 45%);
+  --primary-foreground: hsl(0, 0%, 0%);
+  
+  /* Medical violet secondary */
+  --secondary: hsl(262, 100%, 65%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  
+  --muted: hsl(0, 0%, 14.9%);
+  --muted-foreground: hsl(0, 0%, 63.92%);
+  --accent: hsl(0, 0%, 14.9%);
+  --accent-foreground: hsl(187, 100%, 45%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 20%);
+  --input: hsl(0, 0%, 14.9%);
+  --ring: hsl(187, 100%, 45%);
+  
+  /* Medical theme colors */
+  --medical-cyan: hsl(187, 100%, 45%);
+  --medical-violet: hsl(262, 100%, 65%);
+  --zinc-800: hsl(0, 0%, 20%);
+  --zinc-900: hsl(0, 0%, 9%);
+  
+  /* Typography */
+  --font-inter: 'Inter', sans-serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 91.18%);
+  --card: hsl(0, 0%, 9.41%);
+  --card-foreground: hsl(0, 0%, 85.1%);
+  --popover: hsl(0, 0%, 0%);
+  --popover-foreground: hsl(0, 0%, 91.18%);
+  --primary: hsl(187, 100%, 45%);
+  --primary-foreground: hsl(0, 0%, 0%);
+  --secondary: hsl(262, 100%, 65%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 14.9%);
+  --muted-foreground: hsl(0, 0%, 63.92%);
+  --accent: hsl(0, 0%, 14.9%);
+  --accent-foreground: hsl(187, 100%, 45%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 20%);
+  --input: hsl(0, 0%, 14.9%);
+  --ring: hsl(187, 100%, 45%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-inter);
+  }
+  
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    .animate-gantry-rotate,
+    .animate-scan-beam,
+    .animate-float,
+    .animate-spin {
+      animation: none;
+    }
+  }
+}
+
+@layer components {
+  /* Glass morphism card */
+  .glass-card {
+    @apply bg-zinc-900/60 backdrop-blur-xl border border-zinc-800/50;
+  }
+  
+  /* Medical grid background */
+  .medical-grid {
+    background-image: 
+      linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  /* Navigation blur effect */
+  .nav-blur {
+    @apply backdrop-blur-xl bg-black/80 border-b border-zinc-800;
+  }
+  
+  /* Focus styles for accessibility */
+  .focus-visible {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  /* Typography classes */
+  .font-inter {
+    font-family: var(--font-inter);
+  }
+  
+  .font-dm-sans {
+    font-family: var(--font-dm-sans);
+  }
+  
+  .font-mono-medical {
+    font-family: var(--font-mono);
+  }
+  
+  /* Compare slider styles */
+  .compare-container {
+    @apply relative w-full h-96 overflow-hidden rounded-xl;
+  }
+  
+  .compare-slider {
+    @apply absolute top-0 left-1/2 w-1 h-full bg-primary cursor-col-resize z-10;
+    box-shadow: 0 0 10px hsl(187, 100%, 45%);
+  }
+  
+  .compare-handle {
+    @apply absolute top-1/2 left-1/2 w-5 h-5 bg-primary rounded-full transform -translate-x-1/2 -translate-y-1/2;
+    box-shadow: 0 0 15px hsl(187, 100%, 45%);
+  }
+}
+
+@layer utilities {
+  /* 3D Gantry animations */
+  @keyframes gantryRotate {
+    0% { transform: rotateY(0deg) rotateX(15deg); }
+    100% { transform: rotateY(360deg) rotateX(15deg); }
+  }
+  
+  @keyframes scanBeam {
+    0%, 100% { 
+      opacity: 0.3; 
+      transform: scaleX(0.8); 
+    }
+    50% { 
+      opacity: 0.8; 
+      transform: scaleX(1.2); 
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes counter {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px hsl(187, 100%, 45%), 0 0 10px hsl(187, 100%, 45%), 0 0 15px hsl(187, 100%, 45%);
+    }
+    50% {
+      box-shadow: 0 0 10px hsl(187, 100%, 45%), 0 0 20px hsl(187, 100%, 45%), 0 0 30px hsl(187, 100%, 45%);
+    }
+  }
+  
+  .animate-gantry-rotate {
+    animation: gantryRotate 20s linear infinite;
+  }
+  
+  .animate-scan-beam {
+    animation: scanBeam 3s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-counter {
+    animation: counter 2s ease-out forwards;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  /* Medical gradient */
+  .bg-gradient-medical {
+    background: linear-gradient(135deg, hsl(187, 100%, 45%) 0%, hsl(262, 100%, 65%) 100%);
+  }
+  
+  /* Text gradient */
+  .text-gradient-medical {
+    background: linear-gradient(135deg, hsl(187, 100%, 45%) 0%, hsl(262, 100%, 65%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Scanline effect */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      transparent 50%,
+      hsl(187, 100%, 45%, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "xray-super-resolution",
+    "title": "X-Ray Imaging Super-Resolution",
+    "icon": "fas fa-x-ray",
+    "description": "Transform legacy computed radiography to digital radiography equivalent quality through AI enhancement.",
+    "features": [
+      "From ~200 µm CR → ~50 µm DR-equivalent via GenAI SaaS",
+      "Preserve diagnostic fidelity; reduce hardware upgrade pressure",
+      "Pay-per-use; OEM-agnostic implementation"
+    ],
+    "metrics": {
+      "improvement": "4×",
+      "processingTime": "30-60 seconds",
+      "accuracy": "99.2%"
+    },
+    "useCases": [
+      "Legacy CR system upgrades",
+      "Emergency department imaging",
+      "Portable X-ray enhancement",
+      "Rural healthcare facilities"
+    ]
+  },
+  {
+    "id": "ct-enhancement",
+    "title": "CT Imaging Super-Resolution & Enhancement",
+    "icon": "fas fa-microscope",
+    "description": "Legacy CT systems achieve modern slice thickness and spatial resolution through advanced AI processing.",
+    "features": [
+      "Legacy 4/16-slice (~2–3 mm) → ~0.5 mm slice thickness & spatial resolution",
+      "Quality comparable to modern 256/320-slice; scalable to 512/640",
+      "Fraction of capex; cloud or hybrid deployment"
+    ],
+    "metrics": {
+      "sliceThickness": "0.5 mm",
+      "processingTime": "2-5 minutes",
+      "equivalentQuality": "320-slice"
+    },
+    "useCases": [
+      "Legacy CT scanner upgrades",
+      "Detailed anatomical imaging",
+      "Cardiac and vascular studies",
+      "Oncology imaging protocols"
+    ]
+  },
+  {
+    "id": "mri-enhancement",
+    "title": "MRI Imaging Super-Resolution & Enhancement",
+    "icon": "fas fa-brain",
+    "description": "1.5T fast scans achieve 3T/7T-equivalent quality while maintaining SNR and anatomical integrity.",
+    "features": [
+      "1.5T fast scans (~5×5×5 mm) → ~0.5×0.5×0.5 mm 3T/5T/7T-like",
+      "Maintain SNR and anatomical integrity with physics-informed priors",
+      "Throughput gains with shorter scan time + enhancement"
+    ],
+    "metrics": {
+      "voxelSize": "0.5 mm³",
+      "processingTime": "3-8 minutes",
+      "snrImprovement": "40%"
+    },
+    "useCases": [
+      "1.5T system enhancement",
+      "Neurological imaging",
+      "Musculoskeletal studies",
+      "Research applications"
+    ]
+  },
+  {
+    "id": "digital-pathology",
+    "title": "Digital Re-Staining for WSI (Pathology)",
+    "icon": "fas fa-dna",
+    "description": "Predict alternative stain protocols digitally to reduce costs and enable comprehensive tissue analysis.",
+    "features": [
+      "Predict alternative stain protocols digitally (cytology, histology, IHC)",
+      "Reduce multi-stain costs; enable re-analysis of archived slides",
+      "Patient-centric: digital ownership and portability"
+    ],
+    "metrics": {
+      "stainAccuracy": "95%",
+      "costReduction": "60%",
+      "processingTime": "1-2 minutes"
+    },
+    "useCases": [
+      "Digital pathology labs",
+      "Cancer diagnosis workflows",
+      "Research institutions",
+      "Telepathology services"
+    ]
+  }
+]
