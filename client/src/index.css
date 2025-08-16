@@ -5,30 +5,30 @@
 @tailwind utilities;
 
 :root {
-  /* Pure black theme with medical accents */
-  --background: hsl(0, 0%, 0%);
-  --foreground: hsl(0, 0%, 91.18%);
-  --card: hsl(0, 0%, 9.41%);
-  --card-foreground: hsl(0, 0%, 85.1%);
-  --popover: hsl(0, 0%, 0%);
-  --popover-foreground: hsl(0, 0%, 91.18%);
+  /* Light theme colors */
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(240, 10%, 3.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(240, 10%, 3.9%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(240, 10%, 3.9%);
   
   /* Medical cyan primary */
   --primary: hsl(187, 100%, 45%);
-  --primary-foreground: hsl(0, 0%, 0%);
+  --primary-foreground: hsl(0, 0%, 100%);
   
   /* Medical violet secondary */
   --secondary: hsl(262, 100%, 65%);
   --secondary-foreground: hsl(0, 0%, 100%);
   
-  --muted: hsl(0, 0%, 14.9%);
-  --muted-foreground: hsl(0, 0%, 63.92%);
-  --accent: hsl(0, 0%, 14.9%);
-  --accent-foreground: hsl(187, 100%, 45%);
-  --destructive: hsl(0, 84%, 60%);
-  --destructive-foreground: hsl(0, 0%, 100%);
-  --border: hsl(0, 0%, 20%);
-  --input: hsl(0, 0%, 14.9%);
+  --muted: hsl(240, 4.8%, 95.9%);
+  --muted-foreground: hsl(240, 3.8%, 46.1%);
+  --accent: hsl(240, 4.8%, 95.9%);
+  --accent-foreground: hsl(240, 5.9%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 5.9%, 90%);
+  --input: hsl(240, 5.9%, 90%);
   --ring: hsl(187, 100%, 45%);
   
   /* Medical theme colors */
@@ -46,6 +46,7 @@
 }
 
 .dark {
+  /* Dark theme - pure black with medical accents */
   --background: hsl(0, 0%, 0%);
   --foreground: hsl(0, 0%, 91.18%);
   --card: hsl(0, 0%, 9.41%);
@@ -77,6 +78,14 @@
   }
   
   body {
+    @apply bg-background text-foreground;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-inter);
   }
@@ -99,7 +108,15 @@
 @layer components {
   /* Glass morphism card */
   .glass-card {
-    @apply bg-zinc-900/60 backdrop-blur-xl border border-zinc-800/50;
+    @apply bg-white/10 dark:bg-black/40 backdrop-blur-sm border border-white/20 dark:border-zinc-800/50;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .dark .glass-card {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(63, 63, 70, 0.5);
   }
   
   /* Medical grid background */
