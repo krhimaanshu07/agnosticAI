@@ -53,7 +53,7 @@ export default {
         'mono': ['JetBrains Mono', 'monospace'],
       },
       animation: {
-        'gantry-rotate': 'gantryRotate 20s linear infinite',
+        'gantry-rotate': 'gantryRotate 30s linear infinite',
         'scan-beam': 'scanBeam 3s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'counter': 'counter 2s ease-out forwards',
@@ -61,8 +61,8 @@ export default {
       },
       keyframes: {
         gantryRotate: {
-          '0%': { transform: 'rotateY(0deg) rotateX(15deg)' },
-          '100%': { transform: 'rotateY(360deg) rotateX(15deg)' },
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         },
         scanBeam: {
           '0%, 100%': { 

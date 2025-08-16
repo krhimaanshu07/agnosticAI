@@ -122,9 +122,20 @@
   /* Medical grid background */
   .medical-grid {
     background-image: 
-      linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px);
+      linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
+  }
+  
+  /* Scanlines effect */
+  .scanlines {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--primary) / 0.03) 2px,
+      hsl(var(--primary) / 0.03) 4px
+    );
   }
   
   /* Navigation blur effect */
