@@ -43,28 +43,45 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {siteConfig.nav.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`transition-colors focus-visible ${
-                  isActive(item.href) 
-                    ? "text-primary" 
-                    : "text-muted-foreground hover:text-primary"
-                }`}
-                data-testid={`nav-link-${item.name.toLowerCase()}`}
-              >
-                {item.name}
-              </Link>
+              item.name === "Demos" ? (
+                <a
+                  key={item.name}
+                  href="https://dicom-insight-4.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors focus-visible text-muted-foreground hover:text-primary cursor-pointer"
+                  data-testid={`nav-link-${item.name.toLowerCase()}`}
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`transition-colors focus-visible ${
+                    isActive(item.href) 
+                      ? "text-primary" 
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
+                  data-testid={`nav-link-${item.name.toLowerCase()}`}
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
           </div>
           
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/">
+            <a
+              href="https://dicom-insight-4.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90" data-testid="cta-demos">
                 See Demos
               </Button>
-            </Link>
+            </a>
           </div>
           
           {/* Mobile Menu Button */}
@@ -82,27 +99,46 @@ export default function Navbar() {
             <SheetContent side="right" className="w-80 glass-card border-l border-zinc-800">
               <div className="flex flex-col space-y-6 mt-8">
                 {siteConfig.nav.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-left transition-colors ${
-                      isActive(item.href) 
-                        ? "text-primary" 
-                        : "text-zinc-300 hover:text-primary"
-                    }`}
-                    data-testid={`mobile-nav-link-${item.name.toLowerCase()}`}
-                  >
-                    {item.name}
-                  </Link>
+                  item.name === "Demos" ? (
+                    <a
+                      key={item.name}
+                      href="https://dicom-insight-4.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-left transition-colors text-zinc-300 hover:text-primary cursor-pointer"
+                      data-testid={`mobile-nav-link-${item.name.toLowerCase()}`}
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`text-left transition-colors ${
+                        isActive(item.href) 
+                          ? "text-primary" 
+                          : "text-zinc-300 hover:text-primary"
+                      }`}
+                      data-testid={`mobile-nav-link-${item.name.toLowerCase()}`}
+                    >
+                      {item.name}
+                    </Link>
+                  )
                 ))}
                 <div className="pt-6 border-t border-zinc-800 space-y-4">
                   {/* Theme toggle removed - dark mode only */}
-                  <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+                  <a
+                    href="https://dicom-insight-4.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                       See Demos
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </SheetContent>
