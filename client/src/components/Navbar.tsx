@@ -69,10 +69,11 @@ export default function Navbar() {
               className="text-muted-foreground hover:text-foreground"
               data-testid="theme-toggle"
             >
-              {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+              {/* {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />} */}
+              {theme === "light" ? <Sun className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
               <span className="sr-only">Toggle theme</span>
             </Button>
-            <Link href="/demos">
+            <Link href="/">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90" data-testid="cta-demos">
                 See Demos
               </Button>
@@ -115,10 +116,16 @@ export default function Navbar() {
                     className="w-full justify-start text-zinc-300 hover:text-white"
                     data-testid="mobile-theme-toggle"
                   >
-                    {theme === "light" ? <Moon className="h-4 w-4 mr-2" /> : <Sun className="h-4 w-4 mr-2" />}
-                    {theme === "light" ? "Dark mode" : "Light mode"}
+                    {/* {theme === "light" ? <Moon className="h-4 w-4 mr-2" /> : <Sun className="h-4 w-4 mr-2" />} */}
+                    {theme === "light" ? <Sun className="h-5 w-5" /> : <Sun className="h-4 w-4 mr-2" />}
+                    {theme === "light" ? "Dark mode" : "Dark mode"}
                   </Button>
-                  <Link href="/demos" onClick={() => setIsMobileMenuOpen(false)}>
+                  {/* <Link href="/demos" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                      See Demos
+                    </Button>
+                  </Link> */}
+                  <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
                     <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
                       See Demos
                     </Button>
