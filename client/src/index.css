@@ -5,48 +5,7 @@
 @tailwind utilities;
 
 :root {
-  /* Light theme colors */
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(240, 10%, 3.9%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(240, 10%, 3.9%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(240, 10%, 3.9%);
-  
-  /* Medical cyan primary */
-  --primary: hsl(187, 100%, 45%);
-  --primary-foreground: hsl(0, 0%, 100%);
-  
-  /* Medical violet secondary */
-  --secondary: hsl(262, 100%, 65%);
-  --secondary-foreground: hsl(0, 0%, 100%);
-  
-  --muted: hsl(240, 4.8%, 95.9%);
-  --muted-foreground: hsl(240, 3.8%, 46.1%);
-  --accent: hsl(240, 4.8%, 95.9%);
-  --accent-foreground: hsl(240, 5.9%, 10%);
-  --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 5.9%, 90%);
-  --input: hsl(240, 5.9%, 90%);
-  --ring: hsl(187, 100%, 45%);
-  
-  /* Medical theme colors */
-  --medical-cyan: hsl(187, 100%, 45%);
-  --medical-violet: hsl(262, 100%, 65%);
-  --zinc-800: hsl(0, 0%, 20%);
-  --zinc-900: hsl(0, 0%, 9%);
-  
-  /* Typography */
-  --font-inter: 'Inter', sans-serif;
-  --font-dm-sans: 'DM Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  
-  --radius: 0.5rem;
-}
-
-.dark {
-  /* Dark theme - pure black with medical accents */
+  /* Dark theme colors - forced dark mode only */
   --background: hsl(0, 0%, 0%);
   --foreground: hsl(0, 0%, 91.18%);
   --card: hsl(0, 0%, 9.41%);
@@ -66,7 +25,22 @@
   --border: hsl(0, 0%, 20%);
   --input: hsl(0, 0%, 14.9%);
   --ring: hsl(187, 100%, 45%);
+  
+  /* Medical theme colors */
+  --medical-cyan: hsl(187, 100%, 45%);
+  --medical-violet: hsl(262, 100%, 65%);
+  --zinc-800: hsl(0, 0%, 20%);
+  --zinc-900: hsl(0, 0%, 9%);
+  
+  /* Typography */
+  --font-inter: 'Inter', sans-serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --radius: 0.5rem;
 }
+
+/* Dark theme is now forced in :root - no theme switching needed */
 
 @layer base {
   * {
@@ -78,16 +52,11 @@
   }
   
   body {
-    @apply bg-background text-foreground;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-inter);
+    /* Force dark mode background */
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 91.18%);
   }
   
   /* Reduced motion preferences */
