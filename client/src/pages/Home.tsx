@@ -92,7 +92,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <CTA
-                  href="/demos"
+                  href="https://dicon-insights-4.vercel.app/"
                   variant="primary"
                   size="lg"
                   icon={<i className="fas fa-arrow-right" />}
