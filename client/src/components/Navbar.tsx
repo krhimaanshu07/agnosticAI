@@ -46,7 +46,7 @@ export default function Navbar() {
               item.name === "Demos" ? (
                 <a
                   key={item.name}
-                  href="https://dicom-insight-4.vercel.app/"
+                  href="https://website-bookstore-watt-newspaper.trycloudflare.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors focus-visible text-muted-foreground hover:text-primary cursor-pointer"
@@ -74,7 +74,7 @@ export default function Navbar() {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="https://dicom-insight-4.vercel.app/"
+              href="https://website-bookstore-watt-newspaper.trycloudflare.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -102,7 +102,7 @@ export default function Navbar() {
                   item.name === "Demos" ? (
                     <a
                       key={item.name}
-                      href="https://dicom-insight-4.vercel.app/"
+                      href="https://website-bookstore-watt-newspaper.trycloudflare.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsMobileMenuOpen(false)}
@@ -130,7 +130,7 @@ export default function Navbar() {
                 <div className="pt-6 border-t border-zinc-800 space-y-4">
                   {/* Theme toggle removed - dark mode only */}
                   <a
-                    href="https://dicom-insight-4.vercel.app/"
+                    href="https://website-bookstore-watt-newspaper.trycloudflare.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMobileMenuOpen(false)}
