@@ -43,7 +43,7 @@ export default function Login() {
     <>
       <Helmet>
         <title>Login - {siteConfig.name}</title>
-        <meta name="description" content="Sign in to your Agnostic Imaging AI account to access enhanced medical imaging services." />
+        <meta name="description" content="Sign in to your DiagnoSee account to access enhanced medical imaging services." />
       </Helmet>
 
       <div className="min-h-screen flex items-center justify-center bg-black medical-grid pt-20">

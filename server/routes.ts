@@ -165,7 +165,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // API status endpoint for documentation
   app.get("/api/status", (req, res) => {
     res.json({
-      service: "Agnostic Imaging AI API",
+      service: "DiagnoSee API",
       version: "v1.0.0",
       status: "operational",
       uptime: process.uptime(),
